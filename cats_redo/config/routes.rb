@@ -1,5 +1,5 @@
 CatsRedo::Application.routes.draw do
-  resource :session, :only => [:create, :destroy]
+  resource :session, :only => [:new, :create, :destroy]
   resources :users, :only => [:new, :create]
   resources :cats do
     resources :cat_rental_requests, :only => [:new, :create]

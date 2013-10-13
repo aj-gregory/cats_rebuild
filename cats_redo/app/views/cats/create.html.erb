@@ -1,0 +1,31 @@
+<h1>Your Cat's Details</h1>
+
+<form action="<%= cats_url %>" method="post" >
+
+	<label for="cat_name">Name</label>
+	<input type="text" name="cat[name]" id="cat_name">
+	<br>
+
+	<label for="cat_age">Age</label>
+	<input type="text" name="cat[age]" id="cat_age">
+	<br>
+
+	<label for="cat_sex_male">Male</label>
+	<input type="radio" name="cat[sex]" value="M" id="cat_sex_sex">
+	<label for="cat_sex_female">Female</label>
+	<input type="radio" name="cat[sex]" value="F" id="cat_sex_female">
+	<br>
+
+	<label for="cat_color">Color</label>
+	<select name="cat[color]" id="cat_color">
+		<option value="brown">Brown</brown>
+		<option value="black">Black</brown>
+		<option value="white">White</brown>
+	</select>
+  <br>
+
+  <input type="submit" value="Submit cat">
+</form>
+
+<br>
+<%= button_to "Back to Cat List!", cats_url, :method => :get %>
