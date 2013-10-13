@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :password_digest, :username
+  attr_accessible :password_digest, :username, :session_token
 
-  validates :password_digest, :username, :presence => true
+  before_validation(:on => :create) do
+    reset_session_token! if session_token.nil?
+  end
+
+  validates :password_digest, :username,:session_token, :presence => true
 
   has_many :cats,
     :dependent => :destroy
@@ -13,6 +17,11 @@ class User < ActiveRecord::Base
     user.password_digest == password ? user : nil
   end
 
+  def reset_session_token!
+    self.session_token = SecureRandom.urlsafe_base64
+    self.save
+    self.session_token
+  end
 
 
 end
